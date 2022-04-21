@@ -1,0 +1,21 @@
+name: SOOS DAST GitHub Actions
+
+# Controls when the workflow will run
+on: [push]
+
+jobs:
+  soos_dast_analysis_example:
+    name: SOOS DAST Baseline Analysis
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run SOOS DAST Analysis
+        uses: soos-io/soos-dast-github-action@v1.0.0-beta2
+        with:
+          client_id: ${{ secrets.SOOS_CLIENT_ID }}
+          api_key: ${{ secrets.SOOS_API_KEY }}
+          project_name: ${{ github.repository }}
+          scan_mode: 'baseline'
+          api_url: "https://dev-api.soos.io/api/"
+          target_url: "https://brokencrystals.com/"
+          sarif: true
+          gpat: ${{ secrets.SOOS_GITHUB_PAT }}
