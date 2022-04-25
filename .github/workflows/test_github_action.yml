@@ -16,6 +16,6 @@ jobs:
           project_name: ${{ github.repository }}
           scan_mode: 'baseline'
           api_url: "https://dev-api.soos.io/api/"
-          target_url: "https://brokencrystals.com/"
+          target_url: "https://soos.io/"
           sarif: true
           gpat: ${{ secrets.SOOS_GITHUB_PAT }}
