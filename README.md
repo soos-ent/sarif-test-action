@@ -1,1 +1,1 @@
-# sarif-test-action
+# sarif-test-action 
