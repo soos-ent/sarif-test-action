@@ -4,12 +4,14 @@ name: SOOS DAST GitHub Actions
 on: [push]
 
 jobs:
-  soos_dast_analysis_example:
-    name: SOOS DAST Baseline Analysis
+  soos:
+    permissions:
+      security-events: write # for uploading code scanning alert info
+    name: SOOS DAST Scan
     runs-on: ubuntu-latest
     steps:
-      - name: Run SOOS DAST Analysis
-        uses: soos-io/soos-dast-github-action@v1.0.0
+      - name: Run SOOS DAST Scan
+        uses: soos-io/soos-dast-github-action@v1.2.7
         with:
           client_id: ${{ secrets.SOOS_CLIENT_ID }}
           api_key: ${{ secrets.SOOS_API_KEY }}
@@ -17,5 +19,8 @@ jobs:
           scan_mode: 'baseline'
           api_url: "https://dev-api.soos.io/api/"
           target_url: "https://brokencrystals.com/"
-          sarif: true
-          gpat: ${{ secrets.SOOS_GITHUB_PAT }}
+          output_format: "sarif"
+      - name: Upload SOOS DAST Report
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: results.sarif
