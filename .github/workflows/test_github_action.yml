@@ -24,6 +24,7 @@ jobs:
         uses: github/codeql-action/upload-sarif@v2
         with:
           sarif_file: results.sarif
+      - uses: actions/checkout@master
       - name: SOOS SCA Analysis
         uses: soos-io/soos-sca-github-action@v1.2.3
         with:
