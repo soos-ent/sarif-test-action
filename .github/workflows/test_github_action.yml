@@ -30,5 +30,6 @@ jobs:
           project_name: ${{ github.repository }}
           sarif: "true"
           gpat: ${{ secrets.GITHUB_PERSONAL_ACCESS_TOKEN }}
+          api_url: "https://dev-api.soos.io/api/"
           client_id: ${{ secrets.SOOS_CLIENT_ID }}
           api_key: ${{ secrets.SOOS_API_KEY }}
