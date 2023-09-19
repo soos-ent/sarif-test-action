@@ -26,12 +26,15 @@ jobs:
           sarif_file: results.sarif
       - uses: actions/checkout@master
       - name: SOOS SCA Analysis
-        uses: soos-io/soos-sca-github-action@v1.2.3
+        uses: soos-io/soos-sca-github-action@pre-release-testing
         with:
           project_name: ${{ github.repository }}
           sarif: "true"
-          gpat: ${{ secrets.GITHUB_PERSONAL_ACCESS_TOKEN }}
           api_url: "https://dev-api.soos.io/api/"
           client_id: ${{ secrets.SOOS_CLIENT_ID }}
           api_key: ${{ secrets.SOOS_API_KEY }}
           package_managers: "npm"
+      - name: Upload SOOS DAST Report
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: results.sarif
