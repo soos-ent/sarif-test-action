@@ -15,7 +15,7 @@ jobs:
         with:
           client_id: ${{ secrets.SOOS_CLIENT_ID }}
           api_key: ${{ secrets.SOOS_API_KEY }}
-          project_name: ${{ github.repository }}
+          project_name: "change name"
           scan_mode: 'baseline'
           api_url: "https://dev-api.soos.io/api/"
           target_url: "https://brokencrystals.com/"
