@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Run SOOS DAST Scan
-        uses: soos-io/soos-dast-github-action@v1.2.7
+        uses: soos-io/soos-dast-github-action@v2.0.0
         with:
           client_id: ${{ secrets.SOOS_CLIENT_ID }}
           api_key: ${{ secrets.SOOS_API_KEY }}
@@ -26,7 +26,7 @@ jobs:
           sarif_file: results.sarif
       - uses: actions/checkout@master
       - name: SOOS SCA Analysis
-        uses: soos-io/soos-sca-github-action@pre-release-testing
+        uses: soos-io/soos-sca-github-action@v1.2.4
         with:
           project_name: ${{ github.repository }}
           sarif: "true"
